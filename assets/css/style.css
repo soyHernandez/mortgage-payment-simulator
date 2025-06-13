@@ -128,7 +128,7 @@ label{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-areas: "label1 label2" "input1 input2";
+    grid-template-areas: "label1 label2" "input1 input2" "error1 error2";
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem 1rem;
 }
@@ -189,4 +189,42 @@ label{
 
 input[type="radio"]:checked{
     filter: hue-rotate(290deg);
+}
+
+.btn-submit{
+    width: 70%;
+    height: 2.5rem;
+    background-color: hsl(120, 100%, 72%);
+    color: hsl(202, 55%, 16%);
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: .5rem;
+    justify-items: center;
+    text-align: center;
+    text-decoration: none;
+}
+.btn-submit p{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    justify-self: center;
+    bottom: .3rem;
+    font-weight: 500;
+}
+.btn-submit:hover{
+    background-color: hsla(120, 100%, 80%, 0.904);
+    color: hsl(202, 55%, 16%);
+}
+.error-message{
+    color: hsl(4, 69%, 50%);
+    font-size: 1rem;
+    font-weight: 500;
+}
+.error{
+    background-color: hsl(4, 69%, 50%) !important;
+    font-weight: 700 !important;
+    color: hsl(0, 0%, 100%) !important;
 }

@@ -24,36 +24,36 @@
     </div>
     <form id="mortgage-form">
       <label for="amount">Mortgage Amount</label>
-      <div class="mortgage">
+      <div class="mortgage"  id="amountContainer">
           <span class="currency">£</span> 
           <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
-        </div>
+      </div>
       <div class="paremeters">
         <label class="label-y" for="term">Mortgage Term (years)</label>
-        <div class="years">
+        <div class="years" id="years">
           <input type="number" id="term" name="term" placeholder="Enter term in years" required>
           <span class="years-text">years</span>
         </div>
         <label class="label-i" for="rate">Interest Rate (%)</label>
-        <div class="interest">
+        <div class="interest" id="interest">
           <input type="number" id="rate" name="rate" placeholder="Enter interest rate" required>
           <span class="percentage">%</span>
         </div>
       </div>
 
       <label for="type">Mortgage Type</label>
-      <div class="options">
+      <div class="options" id="opcions">
         <div class="option">
-          <input type="radio" id="fixed" name="type" value="fixed">
+          <input type="radio" id="repayment" name="type" value="repayment">
           <label for="fixed">Repayments</label>
         </div>
         <div class="option">
-          <input type="radio" id="variable" name="type" value="variable">
+          <input type="radio" id="onlyInterest" name="type" value="onlyInterest">
           <label for="variable">Interest Only</label>
         </div>
       </div>
 
-      <button type="submit"> <img src="assets/images/icon-calculator.svg" id="iconCalculator"> Calculate Repayments</button>
+      <button type="submit" id="btnSubmit" class="btn-submit"> <img src="assets/images/icon-calculator.svg" id="iconCalculator"> <p>Calculate Repayments</p></button>
     </form>
 
   </div>
@@ -90,5 +90,6 @@
   </div>
 
   <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/validation.js"></script>
 </body>
 </html>
