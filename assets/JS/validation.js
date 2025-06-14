@@ -14,7 +14,9 @@ function showError(inputElement, message, id) {
     errorElement.textContent = message;
     errorElement.id = id
     let spanElement;
-    // Añadir clase de error al input
+    let isNumber = isNaN(inputElement.value);
+    if(inputElement.value === '' || isNumber === true) {
+            // Añadir clase de error al input
     inputElement.classList.add('error-input');
     if(errorElement.id === 'yearError') {
         errorElement.style.gridArea = 'error1';
@@ -33,10 +35,23 @@ function showError(inputElement, message, id) {
         spanElement.classList.add('error');
         return false;
     }
-    // // else {
-    //     document.getElementById(id).remove();
-    //     return true;
-    // }
+    }else{
+        // Si el input ya tiene un mensaje de error, no hacer nada
+        const existingError = document.getElementById(id);
+            if(errorElement.id === 'yearError' || errorElement.id === 'interestError') {
+                 spanElement = inputElement.parentElement.children[1];
+             }else {
+                spanElement = inputElement.parentElement.children[0];
+            }
+        if (existingError) {
+            existingError.remove();
+            inputElement.classList.remove('error-input');
+            spanElement.classList.remove('error');
+        }
+        return true;
+        
+    }
+    
 }
 function validate() {
     let isValidAmount = showError(amountInput.children[1], 'the field is required', 'amountError');
