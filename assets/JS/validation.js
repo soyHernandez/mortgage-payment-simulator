@@ -2,12 +2,37 @@ const amountInput = document.getElementById('amountContainer');
 const yearInput = document.getElementById('years');
 const interestInput = document.getElementById('interest');
 const btnSubmit = document.getElementById('btnSubmit');
+const optionsElements = document.querySelector('.selected');
+const optionContainer = document.getElementById('opcions')
+const clearButton = document.getElementById('clear');
 
 btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     validate();
 })
-
+clearButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    // Clear all input fields
+    amountInput.children[1].value = '';
+    yearInput.children[0].value = '';
+    interestInput.children[0].value = '';
+    
+    // Remove error messages and classes
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(error => error.remove());
+    
+    const errorInputs = document.querySelectorAll('.error-input');
+    errorInputs.forEach(input => input.classList.remove('error-input'));
+    
+    const spanElements = document.querySelectorAll('.error');
+    spanElements.forEach(span => span.classList.remove('error'));
+    
+    // Reset selected option
+    optionContainer.querySelectorAll('.option').forEach(option => {
+        option.classList.remove('selected');
+        option.children[0].checked = false;
+    });
+})
 function showError(inputElement, message, id) {
     const errorElement = document.createElement('p');
     errorElement.classList.add('error-message');
@@ -31,6 +56,7 @@ function showError(inputElement, message, id) {
     // Insertar el mensaje de error después del input
     const existingError = document.getElementById(id);
     if (!existingError) {
+        inputElement.classList.add('error-input');
         inputElement.parentElement.insertAdjacentElement('afterend', errorElement);
         spanElement.classList.add('error');
         return false;
@@ -57,7 +83,16 @@ function validate() {
     let isValidAmount = showError(amountInput.children[1], 'the field is required', 'amountError');
     let isValidYear = showError(yearInput.children[0], 'the field is required', 'yearError');
     let isValidInterest = showError(interestInput.children[0], 'the field is required', 'interestError');
-    amountInput.children[1].focus();
     console.log(`isValidAmount: ${isValidAmount}, isValidYear: ${isValidYear}, isValidInterest: ${isValidInterest}`);
-    
+    if(!optionsElements){
+        const errorElement = document.createElement('p');
+        errorElement.classList.add('error-message');
+        errorElement.textContent = 'Please select an option';
+        errorElement.id = 'optionError';
+        const existingError = document.getElementById('optionError');
+        if (!existingError) {
+            optionContainer.insertAdjacentElement('afterend', errorElement);
+            return false;
+        }
+    }
 }

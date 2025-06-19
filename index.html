@@ -20,7 +20,7 @@
   <div class="calculator">
     <div class="title">
       <h2>Mortgage Calculator</h2>
-      <p>Clear all</p>
+      <p id="clear">Clear all</p>
     </div>
     <form id="mortgage-form">
       <label for="amount">Mortgage Amount</label>
@@ -44,11 +44,11 @@
       <label for="type">Mortgage Type</label>
       <div class="options" id="opcions">
         <div class="option">
-          <input type="radio" id="repayment" name="type" value="repayment">
+          <input type="radio" id="repayment" name="type" class="radio-opt" value="repayment">
           <label for="fixed">Repayments</label>
         </div>
         <div class="option">
-          <input type="radio" id="onlyInterest" name="type" value="onlyInterest">
+          <input type="radio" id="onlyInterest" name="type" class="radio-opt" value="onlyInterest">
           <label for="variable">Interest Only</label>
         </div>
       </div>
@@ -61,25 +61,34 @@
 
     
       <!-- Empty results start -->
+
+      <!-- <img src="assets/images/illustration-empty.svg"> -->
     
-      Results shown here
+      <!-- <H2>Results shown here</H2> -->
     
-      Complete the form and click “calculate repayments” to see what 
-      your monthly repayments would be.
+      <!-- <P>Complete the form and click “calculate repayments” to see what  -->
+      <!-- your monthly repayments would be.</P> -->
     
       <!-- Empty results end -->
     
       <!-- Completed results start -->
     
-      Your results
+      <h2>Your results</h2>
     
-      Your results are shown below based on the information you provided. 
+      <p>Your results are shown below based on the information you provided. 
       To adjust the results, edit the form and click “calculate repayments” again.
-    
-      Your monthly repayments
-    
-      Total you'll repay over the term
-    
+      </p>
+      
+      <div class="results-container">
+        <div class="result-item-month">
+          <p class="result-label">Your Monthly Repayments</p>
+          <p class="result-value-month" id="monthlyRepayment">£0.00</p>
+        </div>
+        <div class="result-item-total">
+          <p class="result-label">Total you'll repay over the term</p>
+          <p class="result-value-total" id="totalInterest">£0.00</p>
+        </div>
+      </div>
       <!-- Completed results end -->
   </div>
 </div>
